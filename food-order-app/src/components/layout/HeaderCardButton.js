@@ -1,8 +1,11 @@
 import CartIcon from "../cart/CartIcon";
 import styles from "./HeaderCardButton.module.css";
 
-const HeaderCardButton = () => (
-  <button className={styles.button}>
+const HeaderCardButton = ({ onClick }) => (
+  <button
+    className={styles.button}
+    onClick={onClick}
+  >
     <span className={styles.icon}>
       <CartIcon />
     </span>

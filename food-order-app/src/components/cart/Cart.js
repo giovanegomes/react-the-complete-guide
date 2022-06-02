@@ -1,27 +1,28 @@
-import styles from './Card.module.css';
+import Modal from '../UI/Modal';
+import styles from './Cart.module.css';
 
-const Card = () => {
+const Cart = ({ onHideCart }) => {
   const cartItems = (
     <ul className={styles.cartItems}>{
       [{id: 'c1', name: 'sushi', amount: 2, price: 12.99}].map(
-        (item) => (<li>{item.name}</li>), 
+        (item) => (<li key={item.id}>{item.name}</li>), 
       )}
     </ul>
   );
 
   return (
-    <div>
+    <Modal onClose={onHideCart}>
       {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>35.62</span>
       </div>
       <div className={styles.actions}>
-        <button className={styles.buttonAlt}>Close</button>
+        <button className={styles.buttonAlt} onClick={onHideCart}>Close</button>
         <button className={styles.button}>Order</button>
       </div>
-    </div>
+    </Modal>
   );
 };
 
-export default Card;
+export default Cart;
