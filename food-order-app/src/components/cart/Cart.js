@@ -9,8 +9,13 @@ const Cart = ({ onHideCart }) => {
   const totalAmount = `$${cartContext.totalAmount.toFixed(2)}`;
   const hasItems = cartContext.items.length > 0;
 
-  const cartItemAddHandler = (item) => {};
-  const cartItemRemoveHandler = (id) => {};
+  const cartItemAddHandler = (item) => {
+    cartContext.addItem({ ...item, amount: 1 });
+  };
+
+  const cartItemRemoveHandler = (id) => {
+    cartContext.removeItem(id);
+  };
   
   const cartItems = (
     <ul className={styles.cartItems}>{
