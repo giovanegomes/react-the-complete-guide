@@ -1,15 +1,6 @@
 import React from 'react';
 import useInput from '../hooks/use-input';
-
-const validateName = (name) => name.trim() !== '';
-
-const validateEmail = (email) => {
-  const expression = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  return String(email)
-    .toLowerCase()
-    .match(expression);
-};
+import { emptyValue, validateEmail } from '../utils/form-validation';
 
 const SimpleInput = () => {
   const {
@@ -19,7 +10,7 @@ const SimpleInput = () => {
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
-  } = useInput(validateName);
+  } = useInput(emptyValue);
 
   const {
     value: enteredEmail,
