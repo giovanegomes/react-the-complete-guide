@@ -1,6 +1,6 @@
 import React from 'react';
 import useInput from '../hooks/use-input';
-import { emptyValue, validateEmail } from '../utils/form-validation';
+import { isNotEmpty, validateEmail } from '../utils/form-validation';
 
 const SimpleInput = () => {
   const {
@@ -10,7 +10,7 @@ const SimpleInput = () => {
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
-  } = useInput(emptyValue);
+  } = useInput(isNotEmpty);
 
   const {
     value: enteredEmail,

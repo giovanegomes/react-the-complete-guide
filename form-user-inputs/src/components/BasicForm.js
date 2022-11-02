@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import useInput from "../hooks/use-input";
-import { emptyValue, validateEmail } from "../utils/form-validation";
+import { isNotEmpty, validateEmail } from "../utils/form-validation";
 
 const BasicForm = () => {
   const {
@@ -10,7 +10,7 @@ const BasicForm = () => {
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
     reset: firstNameReset,
-  } = useInput(emptyValue);
+  } = useInput(isNotEmpty);
 
   const {
     value: lastNameValue,
@@ -19,7 +19,7 @@ const BasicForm = () => {
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: lastNameReset,
-  } = useInput(emptyValue);
+  } = useInput(isNotEmpty);
 
   const {
     value: emailValue,
@@ -46,7 +46,7 @@ const BasicForm = () => {
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
-    if (!firstNameIsValid || !lastNameIsValid || !emailIsValid) return;
+    if (!formIsValid) return;
 
     firstNameReset();
     lastNameReset();
